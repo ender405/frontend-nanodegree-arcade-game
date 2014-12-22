@@ -48,9 +48,13 @@ Player.prototype.update = function(dt) {
     this.y = this.y;
     // if you reach the water, reset the x and y
     if (this.y < 0) {
-        this.y = 4*101;
-        this.x = 2*101;
+        this.reset();
     }
+}
+
+Player.prototype.reset = function() {
+    this.y = 404;
+    this.x = 202;
 }
 
 Player.prototype.render = function() {
@@ -60,11 +64,11 @@ Player.prototype.render = function() {
 
 Player.prototype.handleInput = function(key) {
 
-    if (key === 'left') {
+    if (key === 'left' && this.x > 0) {
         this.x = this.x - 101;
     };
 
-    if (key === 'right') {
+    if (key === 'right' && this.x < 404) {
         this.x = this.x + 101;
     };
 
@@ -72,7 +76,7 @@ Player.prototype.handleInput = function(key) {
         this.y = this.y - 83;
     };
 
-    if (key === 'down') {
+    if (key === 'down' && this.y < 404) {
         this.y = this.y + 83;
     };
 
