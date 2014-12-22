@@ -8,6 +8,7 @@ var Enemy = function(x, y) {
     this.sprite = 'images/enemy-bug.png';
     this.x = x;
     this.y = y;
+    // generate a random number from 1 to 6 which will represent the enemy's speed
     this.speed = Math.floor(Math.random() * 6) + 1;
 }
 
@@ -45,6 +46,11 @@ Player.prototype.update = function(dt) {
 
     this.x = this.x;
     this.y = this.y;
+    // if you reach the water, reset the x and y
+    if (this.y < 0) {
+        this.y = 4*101;
+        this.x = 2*101;
+    }
 }
 
 Player.prototype.render = function() {
